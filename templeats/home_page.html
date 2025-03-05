@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do Dashboard</title>
+    <link rel="stylesheet" href="{% static 'home_page.css' %}">
+</head>
+<body>
+    <div class="navbar">
+        <h1>To-Do Dashboard</h1>
+    </div>
+
+    <div class="container">
+        <h2>Welcome, {{username}}</h2>
+        <p>Choose an option below to manage your tasks:</p>
+
+        <div class="home-options">
+            <!-- Task List Page -->
+            <div class="option-item">
+                <a href="{% url 'task_list' %}">View Task List</a>
+                <p>See all your tasks at a glance.</p>
+            </div>
+
+            <!-- Add Task Page -->
+            <div class="option-item">
+                <a href="{% url 'add_task'%}">Add New Task</a>
+                <p>Create a new task to manage your to-do list.</p>
+            </div>
+
+            <!-- Profile Page (Optional) -->
+            <div class="option-item">
+                <a href="{% url 'profile_page' %}">Profile</a>
+                <p>Manage your account settings.</p>
+            </div>
+
+            <!-- Edit Task Page -->
+            <div class="option-item">
+                <a href="{% url 'edit_task' %}">Edit Task</a>
+                <p>Modify your existing tasks.</p>
+            </div>
+
+            <!-- Task Details Page -->
+            <div class="option-item">
+                <a href="{% url 'task_details' %}">Task Details</a>
+                <p>View specific task details and deadlines.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

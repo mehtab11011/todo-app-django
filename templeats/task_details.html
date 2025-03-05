@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Details</title>
+    <link rel="stylesheet" href="{% static 'task_details.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Task Details</h1>
+        {% for n in detail_data %}
+        <div class="task-details">
+            <!-- Task information -->
+            <h2>Task Name: {{n.name}}</h2>
+            <p><strong>Description:</strong> {{n.description}}.</p>
+            <p><strong>Due Date:</strong> {{n.date}}</p>
+            <p><strong>Priority:</strong> {{n.priority}}</p>
+            <p><strong>Notes:</strong> Make sure to implement a user-friendly UI with clean, simple navigation.</p>
+        </div>
+        {% endfor %}
+
+        <a href="{% url 'edit_task' %}" class="btn-edit-task">Edit Task</a>
+    </div>
+</body>
+</html>

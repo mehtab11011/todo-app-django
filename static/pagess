@@ -1,0 +1,10 @@
+; Login Page – For users to log in to their accounts.
+; Register Page – For new users to create an account.
+; Dashboard/Home Page – Displays an overview of tasks or categories.
+; Task List Page – Shows a list of all the tasks the user has created.
+; Add Task Page – Allows the user to add a new task.
+; Edit Task Page – To update or modify an existing task.
+; Task Details Page – Displays details of a specific task, including notes or deadlines.
+; Profile Page (Optional) – For users to manage their account information.
+; 404 Error Page (Optional) – In case a page is not found.
+; These pages should cover most of the functionalities for your To-Do app. Let me know if you need further details!

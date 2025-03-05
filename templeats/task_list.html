@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task List</title>
+    <link rel="stylesheet" href="{% static 'task_list.css' %}">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Your Task List</h1>
+        {% for n in view_data %}
+
+        <div class="task-list">
+            <!-- Example of task item -->
+            <ul>
+
+                <li class="task-item">
+                    <h2>{{n.name}}</h2>
+                    <p>{{n.description}}</p>
+                    <p><strong>Due Date:</strong>{{n.date}}</p>
+                    <p><strong>Priority:</strong> {{n.priority}}</p>
+                    <!-- </li>
+
+                 <li class="task-item">
+                    <h2>Task 2</h2>
+                    <p>Description of the task 2 goes here.</p>
+                    <p><strong>Due Date:</strong> 2024-10-30</p>
+                    <p><strong>Priority:</strong> Medium</p>
+                </li>
+
+                <li class="task-item">
+                    <h2>Task 3</h2>
+                    <p>Description of the task 3 goes here.</p>
+                    <p><strong>Due Date:</strong> 2024-11-01</p>
+                    <p><strong>Priority:</strong> Low</p> -->
+                </li>
+
+            </ul>
+        </div>
+        {% endfor %}
+
+
+        <a href="{% url 'add_task' %}" class="btn-add-task">Add New Task</a>
+    </div>
+</body>
+
+</html>
