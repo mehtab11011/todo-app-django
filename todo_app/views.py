@@ -42,21 +42,30 @@ def register_page(request):
     return render(request, "register_page.html", data)
 
 
+from datetime import datetime
+
 def addtask_f(request):
     task_data = TaskAddModel.objects.all()
     if request.method == "POST":
         name = request.POST.get("name")
         description = request.POST.get("description")
-        date = request.POST.get("date")
+        date_str = request.POST.get("date")
         priority = request.POST.get("priority")
-        data_save = TaskAddModel(name=name, description=description, date=date, priority=priority)
+
+        # Convert string to Python date object
+        date = datetime.strptime(date_str, "%Y-%m-%d").date() if date_str else None
+
+        data_save = TaskAddModel(
+            name=name,
+            description=description,
+            date=date,
+            priority=priority
+        )
         data_save.save()
         return redirect("task_list")
-    data = {
-        "task_data": task_data
-    }
 
-    return render(request, "add_task.html", data)
+    return render(request, "add_task.html", {"task_data": task_data})
+
 
 
 def tasklist(request):
@@ -67,8 +76,20 @@ def tasklist(request):
     return render(request, "task_list.html", data)
 
 
-def edittask(request, task_id):
-    return render(request, "edit_task.html", ) #{"task": task}
+def edittask(request, id):
+    task = get_object_or_404(TaskAddModel, id=id)
+
+    if request.method == "POST":
+        task.name = request.POST.get("task_name")
+        task.description = request.POST.get("description")
+        date_str = request.POST.get("date")
+        task.date = datetime.strptime(date_str, "%Y-%m-%d").date() if date_str else None
+        task.priority = request.POST.get("priority")
+        task.save()
+        return redirect('task_list')
+
+    return render(request, "edit_task.html", {"task": task})
+
 
 
 def taskdetail(request):
@@ -93,22 +114,27 @@ def profilepage(request):
         user = register.objects.filter(email=email).first()
 
         if user:
-            user.username = username_up  # Update username
-            user.email = email_up  # Update email
+            user.username = username_up 
+            user.email = email_up 
             
-            if password_up:  # Only update password if a new one is provided
-                user.password = make_password(password_up)  # Hash the new password
+            if password_up: 
+                user.password = make_password(password_up) 
             
-            user.save()  # Save the updated user info
+            user.save()  
 
-            # Update the session with new values
+            
             request.session['username'] = username_up
             request.session['email'] = email_up
             
             return redirect("home_page")
     
-    # Render profile page with current user info
+
     return render(request, "profile_page.html", {
         "username": username,
         "email": email
     })
+
+def deletetask(request, id):
+    task = get_object_or_404(TaskAddModel, id=id)
+    task.delete()
+    return redirect('task_list')
