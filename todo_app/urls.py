@@ -26,9 +26,11 @@ urlpatterns = [
     path("home_page/",views.home_page,name="home_page"),
     path("add_task/",views.addtask_f,name="add_task"),
     path("task_list/",views.tasklist,name="task_list"),
-    path('edit-task',views.edittask, name='edit_task'),  
+    path('edit_task/<int:id>/',views.edittask, name='edit_task'),  
     path("task_details",views.taskdetail,name="task_details"),
     path("profile_page",views.profilepage,name="profile_page"),
+    path('delete_task/<int:id>/', views.deletetask, name='delete_task'),
+
 ]
 
    
