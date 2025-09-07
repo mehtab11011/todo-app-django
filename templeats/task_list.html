@@ -12,39 +12,31 @@
 <body>
     <div class="container">
         <h1>Your Task List</h1>
+
         {% for n in view_data %}
-
         <div class="task-list">
-            <!-- Example of task item -->
             <ul>
-
                 <li class="task-item">
-                    <h2>{{n.name}}</h2>
-                    <p>{{n.description}}</p>
-                    <p><strong>Due Date:</strong>{{n.date}}</p>
-                    <p><strong>Priority:</strong> {{n.priority}}</p>
-                    <!-- </li>
+                    <h2>{{ n.name }}</h2>
+                    <p>{{ n.description }}</p>
+                    <p><strong>Due Date:</strong> {{ n.date|date:"d M Y" }}</p>
+                    <p><strong>Priority:</strong> {{ n.priority }}</p>
 
-                 <li class="task-item">
-                    <h2>Task 2</h2>
-                    <p>Description of the task 2 goes here.</p>
-                    <p><strong>Due Date:</strong> 2024-10-30</p>
-                    <p><strong>Priority:</strong> Medium</p>
+                    <!-- Buttons -->
+                    <a href="{% url 'edit_task' n.id %}" class="btn-edit-task">Edit Task</a>
+                    <a href="{% url 'delete_task' n.id %}" class="btn-delete-task"
+                       onclick="return confirm('Are you sure you want to delete this task?');">
+                        Delete Task
+                    </a>
                 </li>
-
-                <li class="task-item">
-                    <h2>Task 3</h2>
-                    <p>Description of the task 3 goes here.</p>
-                    <p><strong>Due Date:</strong> 2024-11-01</p>
-                    <p><strong>Priority:</strong> Low</p> -->
-                </li>
-
             </ul>
         </div>
+        {% empty %}
+        <p>No tasks available. Add a new one!</p>
         {% endfor %}
 
-
-        <a href="{% url 'add_task' %}" class="btn-add-task">Add New Task</a>
+        <!-- Add New Task Button -->
+        <a href="{% url 'add_task' %}" class="btn-add-task">+ Add New Task</a>
     </div>
 </body>
 
