@@ -57,15 +57,107 @@ ul {
     color: #333;
 }
 
+/* ✅ Button container inside task */
+.task-buttons {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+}
+
+/* ✅ Edit Button */
+.btn-edit-task {
+    display: inline-block;
+    padding: 8px 14px;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.btn-edit-task:hover {
+    background-color: #0056b3;
+}
+
+/* ✅ Delete Button */
+.btn-delete-task {
+    display: inline-block;
+    padding: 8px 14px;
+    background-color: #dc3545;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.btn-delete-task:hover {
+    background-color: #a71d2a;
+}
+
+/* ✅ Add Task Button */
 .btn-add-task {
     display: inline-block;
     padding: 12px 20px;
-    background-color: #007bff;
+    background-color: #28a745;
     color: white;
     border-radius: 5px;
     text-decoration: none;
     text-align: center;
     width: 100%;
+}
+
+.btn-add-task:hover {
+    background-color: #218838;
+}
+.container {
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 20px;
+    background: #f4f4f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.task-item {
+    list-style: none;
+    background: white;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.btn-edit-task, .btn-delete-task, .btn-add-task {
+    display: inline-block;
+    padding: 8px 15px;
+    margin-top: 10px;
+    margin-right: 5px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.btn-edit-task {
+    background-color: #28a745; /* green */
+}
+
+.btn-edit-task:hover {
+    background-color: #218838;
+}
+
+.btn-delete-task {
+    background-color: #dc3545; /* red */
+}
+
+.btn-delete-task:hover {
+    background-color: #c82333;
+}
+
+.btn-add-task {
+    background-color: #007bff; /* blue */
+    margin-top: 20px;
 }
 
 .btn-add-task:hover {
